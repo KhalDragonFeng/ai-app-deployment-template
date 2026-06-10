@@ -491,6 +491,164 @@
         .fade-in:nth-child(2) { animation-delay: 0.1s; }
         .fade-in:nth-child(3) { animation-delay: 0.2s; }
         .fade-in:nth-child(4) { animation-delay: 0.3s; }
+
+        /* Project Gallery */
+        .project-gallery {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+        }
+
+        .gallery-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: var(--text-primary);
+        }
+
+        .gallery-subtitle {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 16px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            aspect-ratio: 16/9;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(0,0,0,0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.85));
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-tag {
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--accent-blue);
+            background: rgba(59, 130, 246, 0.15);
+            padding: 2px 6px;
+            border-radius: 4px;
+            align-self: flex-start;
+        }
+
+        .gallery-caption {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-primary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Lightbox Modal */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5, 5, 8, 0.95);
+            z-index: 1000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            backdrop-filter: blur(8px);
+        }
+
+        .lightbox-content {
+            max-width: 900px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            position: relative;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: var(--text-secondary);
+            font-size: 28px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            color: var(--text-primary);
+        }
+
+        .lightbox-image-wrapper {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            aspect-ratio: 16/9;
+            background: #000;
+        }
+
+        .lightbox-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .lightbox-details {
+            padding: 8px 0;
+        }
+
+        .lightbox-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .lightbox-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
     </style>
 </head>
 <body>
@@ -652,6 +810,68 @@ GitHub Push → Actions (OIDC auth) → ECR Build → ECS Deploy → Health Chec
                         <span class="tech-tag">NextAuth v5</span>
                         <span class="tech-tag">Turborepo</span>
                         <span class="tech-tag">Radix UI</span>
+                    </div>
+
+                    <!-- Gallery Section -->
+                    <div class="project-gallery">
+                        <div class="gallery-title">System Architecture & UI Gallery</div>
+                        <p class="gallery-subtitle">Actual screenshots from the local active development environment. Click to enlarge.</p>
+                        
+                        <div class="gallery-grid">
+                            <!-- Image 1: Merchant Hub -->
+                            <div class="gallery-item" onclick="openLightbox('images/saas-marketing/1781105555210.jpg', 'Merchant Hub & Multi-Store Portal (Phase 1/2)', 'Entry point for multi-tenant merchant owners to manage different business branches and store locations with role-based access control (RBAC).')">
+                                <img src="images/saas-marketing/1781105555210.jpg" alt="Merchant Hub">
+                                <div class="gallery-overlay">
+                                    <div class="gallery-tag">Phase 1/2</div>
+                                    <div class="gallery-caption">Merchant Hub Portal</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Image 2: Merchant Overview Dashboard -->
+                            <div class="gallery-item" onclick="openLightbox('images/saas-marketing/1781105688035.jpg', 'Merchant Workspace Dashboard (Phase 2)', 'The central operation control plane for merchant owners, showing store status, active workflows, and quick links to AI automation tools.')">
+                                <img src="images/saas-marketing/1781105688035.jpg" alt="Merchant Workspace">
+                                <div class="gallery-overlay">
+                                    <div class="gallery-tag">Phase 2</div>
+                                    <div class="gallery-caption">Merchant Workspace</div>
+                                </div>
+                            </div>
+
+                            <!-- Image 3: AI Quality Gate -->
+                            <div class="gallery-item" onclick="openLightbox('images/saas-marketing/1781105762406.jpg', 'AI Quality Gate & Output Guardrails (Phase 3/5)', 'A highly sophisticated verification step checking generated copy for grounding (referencing approved merchant memory), compliance scans, cost visibility, and overall structure integrity before publishing.')">
+                                <img src="images/saas-marketing/1781105762406.jpg" alt="AI Quality Gate">
+                                <div class="gallery-overlay">
+                                    <div class="gallery-tag">Phase 3/5</div>
+                                    <div class="gallery-caption">AI Quality Gate & Guardrails</div>
+                                </div>
+                            </div>
+
+                            <!-- Image 4: Booking exception operations -->
+                            <div class="gallery-item" onclick="openLightbox('images/saas-marketing/1781105839042.jpg', 'Booking Operations & Exception Reversals (Phase 5)', 'Complex scheduling manager handling commercial exceptions: booking reversals, refunds, coupon rollbacks, no-show penalties, and ledger adjustments.')">
+                                <img src="images/saas-marketing/1781105839042.jpg" alt="Booking Operations">
+                                <div class="gallery-overlay">
+                                    <div class="gallery-tag">Phase 5</div>
+                                    <div class="gallery-caption">Exception & Booking Ops</div>
+                                </div>
+                            </div>
+
+                            <!-- Image 5: State Machine Debug -->
+                            <div class="gallery-item" onclick="openLightbox('images/saas-marketing/1781105809098.jpg', 'State Machine Handoff & Transaction Boundaries (Phase 2/5)', 'Debug interface showing backend state machine handoffs, idempotency anchors, and transaction boundaries ensuring atomic commits across multiple domain services.')">
+                                <img src="images/saas-marketing/1781105809098.jpg" alt="State Machine Debug">
+                                <div class="gallery-overlay">
+                                    <div class="gallery-tag">Debug View</div>
+                                    <div class="gallery-caption">State Machine Debug</div>
+                                </div>
+                            </div>
+
+                            <!-- Image 6: IDE Development & Requirements Index (User's VS Code screenshot) -->
+                            <div class="gallery-item" onclick="openLightbox('images/saas-marketing/1781105953562.jpg', 'IDE Development & Phase Requirements Index', 'Active development environment in VS Code showing the Phase Requirement Index and prompt-based agent workflow integration for LinkFlow.')">
+                                <img src="images/saas-marketing/1781105953562.jpg" alt="IDE Development">
+                                <div class="gallery-overlay">
+                                    <div class="gallery-tag">Development</div>
+                                    <div class="gallery-caption">VS Code Development</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -845,6 +1065,20 @@ GitHub Push → Actions (OIDC auth) → ECR Build → ECS Deploy → Health Chec
         </div>
     </footer>
 
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+            <div class="lightbox-image-wrapper">
+                <img id="lightbox-img" src="" alt="Enlarged View">
+            </div>
+            <div class="lightbox-details">
+                <div id="lightbox-title" class="lightbox-title"></div>
+                <div id="lightbox-desc" class="lightbox-desc"></div>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Intersection Observer for fade-in animations
         const observer = new IntersectionObserver((entries) => {
@@ -858,6 +1092,28 @@ GitHub Push → Actions (OIDC auth) → ECR Build → ECS Deploy → Health Chec
         document.querySelectorAll('.fade-in').forEach(el => {
             el.style.animationPlayState = 'paused';
             observer.observe(el);
+        });
+
+        // Lightbox functionality
+        function openLightbox(src, title, desc) {
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            const titleEl = document.getElementById('lightbox-title');
+            const descEl = document.getElementById('lightbox-desc');
+            
+            img.src = src;
+            titleEl.textContent = title;
+            descEl.textContent = desc;
+            lightbox.style.display = 'flex';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        
+        // Close on esc key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
         });
     </script>
 
