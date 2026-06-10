@@ -4,13 +4,15 @@
 
 Welcome to my personal engineering portfolio repository. This repository hosts my interactive architect dashboard, comprehensive career timeline, and detailed technical case studies documenting production systems I have built, migrated, or optimized.
 
-## 🔗 Live Portals (GitHub Pages)
+## 🔗 Live Portals & Demo Projects
 
 *   🏠 **Main Gateway Hub:** [https://khaldragonfeng.github.io/portfolio/](https://khaldragonfeng.github.io/portfolio/)
 *   💼 **Interactive Resume & Full Portfolio:** [https://khaldragonfeng.github.io/portfolio/portfolio.html](https://khaldragonfeng.github.io/portfolio/portfolio.html)
 *   🛡️ **B2B Financial Portal Takeover (AWS DevOps):** [https://khaldragonfeng.github.io/portfolio/project-takeover.html](https://khaldragonfeng.github.io/portfolio/project-takeover.html)
 *   🚀 **AI SaaS Marketing Monorepo Case Study:** [https://khaldragonfeng.github.io/portfolio/saas-marketing.html](https://khaldragonfeng.github.io/portfolio/saas-marketing.html)
 *   🎮 **WeChat Mini Game Cocos systems case study:** [https://khaldragonfeng.github.io/portfolio/game-showcase.html](https://khaldragonfeng.github.io/portfolio/game-showcase.html)
+*   🌐 **Next.js Full-Stack SaaS Starter Codebase:** [https://github.com/KhalDragonFeng/nextjs-saas-starter](https://github.com/KhalDragonFeng/nextjs-saas-starter)
+*   ⚙️ **Spring Boot KOL Match Engine Codebase:** [https://github.com/KhalDragonFeng/spring-kol-match-engine](https://github.com/KhalDragonFeng/spring-kol-match-engine)
 
 ---
 
