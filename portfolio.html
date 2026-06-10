@@ -721,15 +721,6 @@
                             <div class="metric-label">Downtime Deploys</div>
                         </div>
                     </div>
-                    <div class="arch-preview">
-<span class="comment">── AWS Architecture ──</span>
-Cloudflare DNS → AWS ALB (ACM SSL) → ECS (EC2) → Container:3000
-                                                    ├── RDS PostgreSQL (private subnet, SSL)
-                                                    └── S3 (file storage, IAM role)
-
-<span class="comment">── CI/CD ──</span>
-GitHub Push → Actions (OIDC auth) → ECR Build → ECS Deploy → Health Check
-                    </div>
                     <div class="tech-tags">
                         <span class="tech-tag">Next.js 16</span>
                         <span class="tech-tag">TypeScript</span>
@@ -743,6 +734,13 @@ GitHub Push → Actions (OIDC auth) → ECR Build → ECS Deploy → Health Chec
                         <span class="tech-tag">Cloudflare</span>
                         <span class="tech-tag">Prisma</span>
                         <span class="tech-tag">NextAuth v5</span>
+                    </div>
+
+                    <!-- Link to Detail Page -->
+                    <div style="margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; justify-content: flex-start;">
+                        <a href="project-takeover.html" class="btn btn-primary" style="font-size: 14px; padding: 10px 22px;">
+                            Explore Detailed Case Study & AWS Console Gallery →
+                        </a>
                     </div>
                 </div>
 
