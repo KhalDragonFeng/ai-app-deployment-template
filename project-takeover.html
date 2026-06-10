@@ -750,12 +750,13 @@
         <header class="header">
             <div class="header-meta">
                 <span class="badge badge-live">● Live in Production</span>
-                <span class="badge badge-blue">DevOps & Infrastructure Takeover</span>
+                <span class="badge badge-blue">DevOps & Cost-Performance Optimization</span>
             </div>
-            <h1 id="page-title">B2B Data Portal — AWS Production Takeover</h1>
+            <h1 id="page-title">B2B Data Portal — AWS Production Takeover & Scaling</h1>
             <p class="header-subtitle" id="page-subtitle">
-                Migrating a legacy data portal from local development setups to enterprise AWS ECS container architecture, 
-                refactoring SQLite database storage to Managed RDS PostgreSQL, and securing continuous delivery with passwordless OIDC roles.
+                Rescuing a Next.js financial portal from an AI-generated SQLite database and manual FTP workflows. 
+                Migrating to AWS RDS PostgreSQL, engineering horizontal container autoscaling, and designing a query cache 
+                to support 100+ concurrent trade-show users under a strict $100/mo cloud budget.
             </p>
         </header>
 
@@ -766,8 +767,8 @@
                 <div class="metric-label">Concurrent User Capacity</div>
             </div>
             <div class="metric-card">
-                <div class="metric-number"><span>~$100</span></div>
-                <div class="metric-label">Monthly Cost Cap Limit</div>
+                <div class="metric-number"><span>~$100/mo</span></div>
+                <div class="metric-label">AWS Cloud Budget Cap</div>
             </div>
             <div class="metric-card">
                 <div class="metric-number"><span>90%+</span></div>
@@ -775,7 +776,7 @@
             </div>
             <div class="metric-card">
                 <div class="metric-number"><span>0</span></div>
-                <div class="metric-label">Plaintext Secrets in Repo</div>
+                <div class="metric-label">Plaintext Keys in Code</div>
             </div>
         </section>
 
@@ -784,38 +785,46 @@
             
             <!-- Left Column: The Narrative -->
             <div class="panel">
-                <h2 class="card-heading">🛠️ The Architectural Takeover & Refactoring Story</h2>
+                <h2 class="card-heading">🛠️ The Architectural Takeover & Cost-Performance Story</h2>
                 
                 <div class="tech-detail-text">
                     <p>
-                        <strong>The Challenge:</strong> I took over a Next.js B2B steel trading data portal that was built on a chaotic architecture. 
-                        The application stored transactional data in a local SQLite file (`data/dev.db`), had image files uploaded directly to local disk folders, 
-                        and was deployed manually via SFTP. Deployments required SSHing into the host, causing service disruption. 
-                        Worse, the team was utilizing administrative <strong>Root User</strong> access keys for deployment scripting.
+                        <strong>The Challenge:</strong> I took over a Next.js B2B steel financial data portal built by non-technical creators using generative AI. 
+                        While AI tools are great for fast prototyping, they often suggest configurations that fail immediately in production. 
+                        The legacy codebase suffered from three critical architecture flaws:
+                    </p>
+                    <ul class="tech-detail-list">
+                        <li>
+                            <strong>SQLite Concurrency Bottleneck:</strong> Storing transactional financial records in a local SQLite file (`dev.db`). While convenient for local development, SQLite locked up during multi-user write operations and posed a severe data corruption risk on a live server.
+                        </li>
+                        <li>
+                            <strong>The "Query Storm" Interaction Bug:</strong> The portal utilized a range slider widget to filter steel pricing metrics. Instead of querying the database upon mouse release (debounce), the widget sent database requests in real-time as the slider dragged. A single drag action triggered <strong>hundreds of concurrent database queries</strong>, causing server memory starvation and immediate database locking.
+                        </li>
+                        <li>
+                            <strong>Manual Operations & Security Risk:</strong> Deployments were performed manually via SFTP, causing service disruption. Furthermore, the team hardcoded permanent AWS Root account keys in script files to execute cloud operations.
+                        </li>
+                    </ul>
+                    <p>
+                        <strong>Performance & Budget Design Constraints:</strong> The client's primary business event was an offline trade-show exhibition where up to <strong>100 users</strong> would scan QR codes to enter the data portal simultaneously. The budget for this cloud deployment was strictly capped at <strong>around $100/month</strong>. 
                     </p>
                     <p>
-                        <strong>Performance & Cost Objectives:</strong> Although the client's application operates on a small scale, they required the infrastructure to reliably handle peak traffic spikes of <strong>100+ concurrent active users</strong> during trade announcements. At the same time, I needed to keep cloud operations highly cost-effective, limiting expenditures to <strong>around $100/month</strong>. Because the portal is heavily read-oriented, focusing on specifications and price search queries, I designed a multi-layer caching system to shield the database and maximize throughput.
-                    </p>
-                    <p>
-                        <strong>The Refactoring Action Plan:</strong> My intervention reorganized the project's foundation into an optimized, secure cloud ecosystem:
+                        <strong>The Refactoring Action Plan:</strong> To handle peak concurrent users within this budget, I implemented a cost-optimized, resilient container infrastructure on AWS:
                     </p>
                     
                     <ul class="tech-detail-list">
                         <li>
-                            <strong>Database Migration & Query Caching:</strong> Refactored the database layer from SQLite to AWS RDS PostgreSQL. Since the platform's profile is query-heavy (steel data catalogs and specifications), I implemented an edge caching strategy using Cloudflare CDN alongside Next.js data cache handlers. This offloaded over 90% of repeat query requests, keeping database CPU utilization low and allowing the entire system to run smoothly on a cost-effective <code>db.t4g.medium</code> (or micro) PostgreSQL database without needing expensive multi-AZ replicas.
+                            <strong>UX Debounce & Shared Query Caching:</strong> Rewrote the range slider event handler to trigger queries *only* on <code>mouseup</code> (mouse release). This instantly reduced query traffic from 300+ database requests per drag down to **exactly 1 request**. Additionally, because steel financial data changes on a scheduled schedule, I configured a 30-minute to 1-hour cache. This cache is shared across all visitors, resolving 90%+ of read requests and keeping database load low.
                         </li>
                         <li>
-                            <strong>ECS Container Orchestration:</strong> Built a multi-stage Docker configuration targeting production optimizations. Containerized the Next.js runtime, reducing image footprint by 65%. I provisioned an AWS ECS cluster running on Fargate (serverless containers) sitting safely in a private VPC subnet group. Tasks were sized strictly to 0.25 vCPU and 0.5 GB RAM, keeping running container costs to a fraction of traditional server hosting.
+                            <strong>SQLite to RDS PostgreSQL Migration:</strong> Refactored the Prisma schema and successfully migrated all B2B trade records to an AWS RDS PostgreSQL database. This improved data integrity, query latency, and simplified future database schema migrations.
                         </li>
                         <li>
-                            <strong>Zero-Downtime Infrastructure:</strong> Configured an Application Load Balancer (ALB) to handle traffic routing and execute rolling deployment upgrades. When GitHub Actions pushes a new version, ECS boots new containers in parallel, performs target group health check polling, shifts user traffic smoothly, and terminates the old revisions without a single dropped packet.
+                            <strong>ECS Fargate Resource Tuning:</strong> Sized Node.js containers precisely to **1.5GB RAM and 0.25 vCPU**. Since Node.js is single-threaded and handles network I/O efficiently, CPU requirements are low. I deployed **2 container tasks** behind an Application Load Balancer (ALB) to avoid single point of failure (SPOF) and enable automated failover. The query cache shielded the RDS database, allowing the entire stack to run smoothly on a cost-effective <code>db.t4g.medium</code> (or micro) PostgreSQL database, keeping the cloud bill strictly around $100/month.
+                        </li>
+                        <li>
+                            <strong>Hands-Off Automated Pipeline:</strong> Because the client continues to iterate the portal using AI tools, they needed a foolproof deployment process. I set up GitHub Actions utilizing OpenID Connect (OIDC) roles. Pushing or merging code to the production branch automatically triggers Docker builds, pushes to Amazon ECR, and executes a zero-downtime rolling update on ECS. The non-technical client never has to manage servers, SSH keys, or AWS access tokens.
                         </li>
                     </ul>
-
-                    <p>
-                        <strong>Post-Handoff Security Hardening:</strong> To secure the infrastructure, I moved the client away from dangerous long-lived access keys and the AWS root account. I configured fine-grained AWS IAM Policies and created a secure OpenID Connect (OIDC) identity provider. 
-                        This allowed GitHub Actions to assume a temporary, short-lived IAM role on demand using cryptographically verified web identity tokens. After handoff, all administrator root access was safely locked down, protecting client assets and validating professional DevOps compliance.
-                    </p>
                 </div>
             </div>
 
