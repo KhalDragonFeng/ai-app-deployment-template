@@ -345,6 +345,26 @@
             border-radius: 4px;
             letter-spacing: 0.5px;
         }
+        .tag-amber {
+            background: rgba(245, 158, 11, 0.15);
+            color: var(--accent-amber);
+            border: 1px solid rgba(245, 158, 11, 0.25);
+        }
+        .tag-blue {
+            background: rgba(59, 130, 246, 0.15);
+            color: #60a5fa;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+        .tag-emerald {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--accent-emerald);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+        }
+        .tag-purple {
+            background: rgba(139, 92, 246, 0.15);
+            color: #a78bfa;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+        }
         .gallery-card-info {
             padding: 18px;
             display: flex;
@@ -797,6 +817,7 @@
                 <button class="tab-btn active" onclick="filterGallery('all')">All Images</button>
                 <button class="tab-btn" onclick="filterGallery('systems')">Game Systems</button>
                 <button class="tab-btn" onclick="filterGallery('ui')">UI Interfaces</button>
+                <button class="tab-btn" onclick="filterGallery('dev')">Dev Workspace</button>
             </div>
 
             <!-- Grid -->
@@ -845,6 +866,54 @@
                         <p class="gallery-card-desc">B2B-style wage breakdown invoice logging base pay, monster bonuses, safety deductions, and employee slacking costs.</p>
                         <div class="gallery-card-footer">
                             <span class="gallery-card-category">SalarySystem</span>
+                            <span class="gallery-card-action">View Telemetry →</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: WeChat Simulator -->
+                <div class="gallery-card" data-category="dev" onclick="openLightbox(3)">
+                    <div class="gallery-img-wrapper">
+                        <span class="gallery-card-badge tag-purple">WeChat Emulator</span>
+                        <img src="images/project-game/dev-wechat-simulator.png" alt="WeChat DevTools Simulator Screen">
+                    </div>
+                    <div class="gallery-card-info">
+                        <h4 class="gallery-card-title">WeChat Simulator & Run Console</h4>
+                        <p class="gallery-card-desc">WeChat Developer Tools emulating the game guild map selector page, verifying layout response, and checking compilation output.</p>
+                        <div class="gallery-card-footer">
+                            <span class="gallery-card-category">WeChat DevTools</span>
+                            <span class="gallery-card-action">View Telemetry →</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5: Cocos Creator Editor -->
+                <div class="gallery-card" data-category="dev" onclick="openLightbox(4)">
+                    <div class="gallery-img-wrapper">
+                        <span class="gallery-card-badge tag-purple">Cocos Creator</span>
+                        <img src="images/project-game/dev-cocos-editor.png" alt="Cocos Creator Scene Workspace">
+                    </div>
+                    <div class="gallery-card-info">
+                        <h4 class="gallery-card-title">Cocos Creator Scene Tree Editor</h4>
+                        <p class="gallery-card-desc">Cocos scene viewport editing startup shell canvas node hierarchies and loading resources prefabs layout coordinates.</p>
+                        <div class="gallery-card-footer">
+                            <span class="gallery-card-category">Cocos Creator 3.8</span>
+                            <span class="gallery-card-action">View Telemetry →</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6: VS Code Workspace -->
+                <div class="gallery-card" data-category="dev" onclick="openLightbox(5)">
+                    <div class="gallery-img-wrapper">
+                        <span class="gallery-card-badge tag-purple">VS Code</span>
+                        <img src="images/project-game/dev-vscode.png" alt="VS Code Automation Workspace">
+                    </div>
+                    <div class="gallery-card-info">
+                        <h4 class="gallery-card-title">VS Code Script Dev Environment</h4>
+                        <p class="gallery-card-desc">Workspace editor displaying WeChat DevTools run scripts, build configurations, and project folders directory topologies.</p>
+                        <div class="gallery-card-footer">
+                            <span class="gallery-card-category">VS Code IDE</span>
                             <span class="gallery-card-action">View Telemetry →</span>
                         </div>
                     </div>
@@ -920,6 +989,24 @@
                 title: "Salary Invoice Settlement System",
                 category: "systems",
                 desc: "The daily guild salary bill sheet, calculating wages, bonus metrics, and employee slacking or theft deductions. Coded with transaction-safe checks to guarantee that gold arithmetic updates cleanly, preparing the game state to synchronize with WeChat CloudBase cloud databases."
+            },
+            {
+                src: "images/project-game/dev-wechat-simulator.png",
+                title: "WeChat Developer Tools Emulator",
+                category: "dev",
+                desc: "WeChat Developer Tools emulator screen running the guild map selection scene. Demonstrates compatibility with WeChat's engine adapters and subpackage size limits, showing the console output and file logs verifying subpackage lazy loading and runtime safety."
+            },
+            {
+                src: "images/project-game/dev-cocos-editor.png",
+                title: "Cocos Creator Scene Tree Editor",
+                category: "dev",
+                desc: "The scene editing workspace in Cocos Creator 3.8.8, detailing node layout hierarchies of the StartupShell canvas. Design coordinates and presentation assets are isolated inside Cocos scene prefabs, separating UI design boundaries cleanly from TypeScript logic files."
+            },
+            {
+                src: "images/project-game/dev-vscode.png",
+                title: "VS Code Automation Environment",
+                category: "dev",
+                desc: "The core developer workspace in VS Code, detailing custom WeChat DevTools runtime compilation scripts, configuration profiles, and project boundaries validation protocols, proving that AI Agents/Codex pipelines integrate seamlessly into the workflow."
             }
         ];
 
@@ -995,6 +1082,8 @@
                 badge.classList.add('tag-emerald');
             } else if (item.category === 'ui') {
                 badge.classList.add('tag-blue');
+            } else if (item.category === 'dev') {
+                badge.classList.add('tag-purple');
             }
 
             document.getElementById('lightbox-index').textContent = `${currentActiveIndex + 1} of ${activeItems.length}`;
