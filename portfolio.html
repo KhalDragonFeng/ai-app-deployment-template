@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qifan Feng — Senior Full-Stack Architect</title>
+    <meta name="description" content="8-year software architect specializing in Java microservices, Next.js SaaS platforms, AWS cloud infrastructure, and Chinese platform API integration.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --bg-card-hover: rgba(255, 255, 255, 0.06);
+            --border: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(255, 255, 255, 0.15);
+            --text-primary: #e8e8ed;
+            --text-secondary: #8b8b9e;
+            --text-muted: #5a5a6e;
+            --accent-blue: #3b82f6;
+            --accent-purple: #8b5cf6;
+            --accent-emerald: #10b981;
+            --accent-amber: #f59e0b;
+            --accent-rose: #f43f5e;
+            --gradient-1: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            --gradient-2: linear-gradient(135deg, #10b981, #3b82f6);
+            --gradient-3: linear-gradient(135deg, #f59e0b, #f43f5e);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Background animated gradient */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 40%, rgba(59, 130, 246, 0.06) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 60%, rgba(139, 92, 246, 0.04) 0%, transparent 50%),
+                        radial-gradient(circle at 50% 80%, rgba(16, 185, 129, 0.03) 0%, transparent 50%);
+            z-index: -1;
+            animation: bgShift 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes bgShift {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-5%, -3%); }
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 0 60px;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            color: var(--accent-blue);
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 52px);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #e8e8ed 0%, #8b8b9e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero h1 span {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 640px;
+            margin: 0 auto 32px;
+            font-weight: 300;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 700;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 2px;
+        }
+
+        /* Section */
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-blue);
+            margin-bottom: 8px;
+        }
+
+        .section-heading {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 40px;
+        }
+
+        /* Project Cards */
+        .projects-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 36px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
+        }
+
+        .project-card:hover::before { opacity: 1; }
+
+        .project-card:nth-child(1)::before { background: var(--gradient-2); }
+        .project-card:nth-child(2)::before { background: var(--gradient-1); }
+        .project-card:nth-child(3)::before { background: var(--gradient-3); }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .project-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        .label-live {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--accent-emerald);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .label-saas {
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--accent-purple);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .label-game {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--accent-amber);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+
+        .project-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .project-desc {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .project-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .metric {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px 16px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .metric-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tech-tag {
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* Architecture Preview */
+        .arch-preview {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            font-size: 13px;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            overflow-x: auto;
+        }
+
+        .arch-preview .folder { color: var(--accent-blue); }
+        .arch-preview .file { color: var(--text-muted); }
+        .arch-preview .comment { color: var(--accent-emerald); font-style: italic; }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+        }
+
+        .skill-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            border-color: var(--border-hover);
+            background: var(--bg-card-hover);
+        }
+
+        .skill-icon {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .skill-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .skill-items {
+            color: var(--text-secondary);
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        /* CTA Section */
+        .cta {
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .cta h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .cta p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 32px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--gradient-1);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--border-hover);
+            background: var(--bg-card-hover);
+        }
+
+        /* Work Experience */
+        .timeline {
+            position: relative;
+            padding-left: 28px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            bottom: 8px;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 28px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -32px;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent-blue);
+            border: 2px solid var(--bg-primary);
+        }
+
+        .timeline-company {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .timeline-role {
+            font-size: 13px;
+            color: var(--accent-blue);
+            margin-bottom: 4px;
+        }
+
+        .timeline-period {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .timeline-highlights {
+            margin-top: 8px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .hero { padding: 60px 0 40px; }
+            .hero-stats { gap: 24px; }
+            .project-card { padding: 24px; }
+            .project-metrics { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in:nth-child(2) { animation-delay: 0.1s; }
+        .fade-in:nth-child(3) { animation-delay: 0.2s; }
+        .fade-in:nth-child(4) { animation-delay: 0.3s; }
+    </style>
+</head>
+<body>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">Available for Freelance Work</div>
+            <h1>I architect systems<br>that <span>ship to production</span></h1>
+            <p class="hero-subtitle">
+                8 years building enterprise backends, SaaS platforms, and cloud infrastructure.
+                I turn ideas into deployed products.
+            </p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">55</div>
+                    <div class="stat-label">Data Models (SaaS)</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">500K+</div>
+                    <div class="stat-label">Daily Matches</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">99.97%</div>
+                    <div class="stat-label">Accuracy</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">Featured Projects</div>
+            <h2 class="section-heading">Real systems, real production</h2>
+
+            <div class="projects-grid">
+
+                <!-- Project 1: AWS Deployment -->
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-title">B2B Data Portal — AWS Production Deployment</div>
+                        </div>
+                        <span class="project-label label-live">● Live in Production</span>
+                    </div>
+                    <p class="project-desc">
+                        Took over a client's Next.js data portal, migrated from SQLite to PostgreSQL, local storage to S3,
+                        and deployed to AWS ECS with zero-downtime CI/CD. The site is live and serving real users.
+                    </p>
+                    <div class="project-metrics">
+                        <div class="metric">
+                            <div class="metric-value">20</div>
+                            <div class="metric-label">Data Models</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">8</div>
+                            <div class="metric-label">DB Migrations</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">15+</div>
+                            <div class="metric-label">SSM Secrets</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">0</div>
+                            <div class="metric-label">Downtime Deploys</div>
+                        </div>
+                    </div>
+                    <div class="arch-preview">
+<span class="comment">── AWS Architecture ──</span>
+Cloudflare DNS → AWS ALB (ACM SSL) → ECS (EC2) → Container:3000
+                                                    ├── RDS PostgreSQL (private subnet, SSL)
+                                                    └── S3 (file storage, IAM role)
+
+<span class="comment">── CI/CD ──</span>
+GitHub Push → Actions (OIDC auth) → ECR Build → ECS Deploy → Health Check
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Next.js 16</span>
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">AWS ECS</span>
+                        <span class="tech-tag">ECR</span>
+                        <span class="tech-tag">RDS PostgreSQL</span>
+                        <span class="tech-tag">S3</span>
+                        <span class="tech-tag">GitHub Actions</span>
+                        <span class="tech-tag">OIDC</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Cloudflare</span>
+                        <span class="tech-tag">Prisma</span>
+                        <span class="tech-tag">NextAuth v5</span>
+                    </div>
+                </div>
+
+                <!-- Project 2: SaaS Platform -->
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-title">AI-Powered SaaS Marketing Platform</div>
+                        </div>
+                        <span class="project-label label-saas">Full-Stack SaaS</span>
+                    </div>
+                    <p class="project-desc">
+                        Solo-architected a multi-tenant marketing automation platform with 6 applications,
+                        55 data models, multi-LLM AI engine, dual payment systems (Stripe + WeChat Pay),
+                        and social media integration with Chinese platforms.
+                    </p>
+                    <div class="project-metrics">
+                        <div class="metric">
+                            <div class="metric-value">55</div>
+                            <div class="metric-label">Data Models</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">6</div>
+                            <div class="metric-label">Applications</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">7</div>
+                            <div class="metric-label">LLM Providers</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">75+</div>
+                            <div class="metric-label">UI Components</div>
+                        </div>
+                    </div>
+                    <div class="arch-preview">
+<span class="comment">── Turborepo Monorepo ──</span>
+<span class="folder">apps/</span>
+├── <span class="folder">merchant/</span>    <span class="comment">← Main business dashboard (Next.js 14)</span>
+├── <span class="folder">web/</span>         <span class="comment">← Public marketing site</span>
+├── <span class="folder">admin/</span>       <span class="comment">← Platform admin console</span>
+├── <span class="folder">miniapp-shell/</span> <span class="comment">← WeChat Mini Program</span>
+├── <span class="folder">auth-proxy/</span>  <span class="comment">← Auth proxy (Nitro/h3)</span>
+└── <span class="folder">python-worker/</span> <span class="comment">← AI generation worker (FastAPI)</span>
+
+<span class="folder">packages/</span>
+├── <span class="folder">db/</span>     <span class="comment">← Prisma schema (55 models, 24 enums)</span>
+├── <span class="folder">api/</span>    <span class="comment">← tRPC routers</span>
+├── <span class="folder">auth/</span>   <span class="comment">← NextAuth + SMS OTP + WeChat Login</span>
+├── <span class="folder">ai/</span>     <span class="comment">← Multi-LLM router (7 providers)</span>
+├── <span class="folder">ui/</span>     <span class="comment">← 75+ shared React components</span>
+├── <span class="folder">stripe/</span> <span class="comment">← Billing integration</span>
+└── <span class="folder">common/</span> <span class="comment">← Shared utilities</span>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Next.js 14</span>
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">tRPC</span>
+                        <span class="tech-tag">Prisma</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">Redis</span>
+                        <span class="tech-tag">BullMQ</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">Stripe</span>
+                        <span class="tech-tag">WeChat Pay</span>
+                        <span class="tech-tag">NextAuth v5</span>
+                        <span class="tech-tag">Turborepo</span>
+                        <span class="tech-tag">Radix UI</span>
+                    </div>
+                </div>
+
+                <!-- Project 3: Game Factory -->
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-title">WeChat Mini Game — RPG with Full Monetization</div>
+                        </div>
+                        <span class="project-label label-game">Game Development</span>
+                    </div>
+                    <p class="project-desc">
+                        Built a complete RPG game for WeChat Mini Games platform with 30 chapters,
+                        40 recruitable characters, real-time battle system, social features, and
+                        a full monetization pipeline including rewarded ads and in-app purchases.
+                    </p>
+                    <div class="project-metrics">
+                        <div class="metric">
+                            <div class="metric-value">80+</div>
+                            <div class="metric-label">Game Systems</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">142+</div>
+                            <div class="metric-label">UI Presenters</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">11</div>
+                            <div class="metric-label">Cloud Functions</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">128</div>
+                            <div class="metric-label">Build Scripts</div>
+                        </div>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Cocos Creator 3.8</span>
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">WeChat Mini Game</span>
+                        <span class="tech-tag">WeChat CloudBase</span>
+                        <span class="tech-tag">Cloud Functions</span>
+                        <span class="tech-tag">WebP Assets</span>
+                        <span class="tech-tag">Rewarded Ads</span>
+                        <span class="tech-tag">WeChat Pay</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">Technical Skills</div>
+            <h2 class="section-heading">What I bring to your project</h2>
+
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">⚙️</div>
+                    <div class="skill-title">Backend Architecture</div>
+                    <div class="skill-items">
+                        Java · Spring Boot · Spring Cloud<br>
+                        MyBatis Plus · ShardingSphere<br>
+                        RabbitMQ · Redis · Elasticsearch<br>
+                        Multi-tenant SaaS · RBAC
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🌐</div>
+                    <div class="skill-title">Full-Stack Web</div>
+                    <div class="skill-items">
+                        Next.js 14-16 · React · TypeScript<br>
+                        tRPC · Prisma · PostgreSQL<br>
+                        NextAuth · Stripe · Tailwind<br>
+                        Radix UI · Framer Motion
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">☁️</div>
+                    <div class="skill-title">Cloud & DevOps</div>
+                    <div class="skill-items">
+                        AWS: ECS · EC2 · RDS · S3 · ALB<br>
+                        Docker · Nginx · SSL/TLS<br>
+                        GitHub Actions · OIDC<br>
+                        Cloudflare · CI/CD Pipelines
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🤖</div>
+                    <div class="skill-title">AI Engineering</div>
+                    <div class="skill-items">
+                        Multi-LLM Router (7 providers)<br>
+                        OpenAI · Claude · DeepSeek · Gemini<br>
+                        FastAPI · BullMQ Async Pipeline<br>
+                        Prompt Engineering
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🇨🇳</div>
+                    <div class="skill-title">China Platform APIs</div>
+                    <div class="skill-items">
+                        Douyin/TikTok Open Platform<br>
+                        WeChat Pay · Mini Programs<br>
+                        Xiaohongshu · Meituan<br>
+                        Aliyun SMS · Alibaba Cloud
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🎮</div>
+                    <div class="skill-title">Game Development</div>
+                    <div class="skill-items">
+                        Cocos Creator 3.8 · TypeScript<br>
+                        WeChat Mini Games<br>
+                        WeChat CloudBase<br>
+                        Ad Monetization · IAP
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Experience -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">Work History</div>
+            <h2 class="section-heading">8 years of enterprise engineering</h2>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-role">Java Developer — SaaS Rights & Benefits Platform</div>
+                    <div class="timeline-company">Longteng Group (Shanghai)</div>
+                    <div class="timeline-period">Mar 2025 – Present</div>
+                    <div class="timeline-highlights">
+                        Multi-tenant SaaS platform for enterprise benefits trading. Designed unified product-rights-order model,
+                        RBAC permission system, and million-row Excel batch import engine with resume-on-failure.
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-role">Java Developer — KOL Promotion Platform</div>
+                    <div class="timeline-company">Qianchuan Network (Shanghai/Nanchang)</div>
+                    <div class="timeline-period">May 2023 – Dec 2024</div>
+                    <div class="timeline-highlights">
+                        Built dynamic rule engine processing 500K+ daily matches (QPS 800, 99.97% accuracy).
+                        ShardingSphere sharding for 10M+ daily data growth. RabbitMQ transactional messaging achieving 99.999% settlement consistency.
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-role">DMP Mid-Platform Developer — CRM & Fleet Management</div>
+                    <div class="timeline-company">DST (Shenzhen)</div>
+                    <div class="timeline-period">May 2021 – Mar 2023</div>
+                    <div class="timeline-highlights">
+                        Built CRM from 0→1 managing 100K+ leads. Redis ZSet for resource allocation (28K daily requests).
+                        E-signature integration reducing contract signing from 3 days to 20 minutes.
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-role">Backend Developer — Industrial Park Platform</div>
+                    <div class="timeline-company">Tian An Cyber Park (Shenzhen)</div>
+                    <div class="timeline-period">Oct 2018 – Apr 2021</div>
+                    <div class="timeline-highlights">
+                        Built park rental service platform. Redis+Lua for anti-oversell ticket control.
+                        Spring Security+JWT+Gateway unified auth. Drove K8s containerization adoption.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="container">
+            <h2>Let's build something together</h2>
+            <p>Available for freelance projects, consulting, and contract work.</p>
+            <div class="cta-buttons">
+                <a href="mailto:khalfeng@163.com" class="btn btn-primary">
+                    ✉️ khalfeng@163.com
+                </a>
+                <a href="#" class="btn btn-secondary">
+                    💼 View on Upwork
+                </a>
+                <a href="#" class="btn btn-secondary">
+                    📦 GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            © 2026 Qifan Feng. Built with code, not templates.
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for fade-in animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+</html>
