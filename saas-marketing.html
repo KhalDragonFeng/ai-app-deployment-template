@@ -50,16 +50,16 @@
             opacity: 0.4;
         }
         .glow-1 {
-            top: -10%, right: -10%;
+            top: -10%; right: -10%;
             background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
         }
         .glow-2 {
-            bottom: -10%, left: -10%;
+            bottom: -10%; left: -10%;
             background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, transparent 70%);
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 40px 24px 80px;
         }
@@ -334,21 +334,43 @@
             font-size: 14px;
             line-height: 1.6;
         }
-        .phase-body ul {
-            margin-top: 8px;
-            margin-left: 20px;
+
+        /* Filterable Showcase Tabs */
+        .gallery-tabs {
             display: flex;
-            flex-direction: column;
-            gap: 4px;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
         }
-        .phase-body li strong {
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 13.5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: 'Outfit', sans-serif;
+        }
+        .tab-btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--border-hover);
             color: var(--text-primary);
+        }
+        .tab-btn.active {
+            background: var(--gradient-1);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.25);
         }
 
         /* Interactive Showcase Grid */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 24px;
             margin-bottom: 56px;
         }
@@ -367,6 +389,9 @@
             transform: translateY(-4px);
             border-color: var(--border-hover);
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        }
+        .gallery-card.hidden {
+            display: none !important;
         }
         .gallery-img-wrapper {
             width: 100%;
@@ -390,33 +415,35 @@
             top: 12px;
             left: 12px;
             z-index: 10;
-            font-size: 10px;
+            font-size: 9px;
             font-weight: 700;
             text-transform: uppercase;
             padding: 3px 8px;
             border-radius: 4px;
+            letter-spacing: 0.5px;
         }
         .gallery-card-info {
-            padding: 20px;
+            padding: 18px;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
         }
         .gallery-card-title {
             font-family: 'Outfit', sans-serif;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 700;
             color: var(--text-primary);
             margin-bottom: 6px;
         }
         .gallery-card-desc {
-            font-size: 13px;
+            font-size: 12.5px;
             color: var(--text-secondary);
             line-height: 1.5;
             display: -webkit-box;
-            -webkit-line-clamp: 3;
+            -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
+            text-overflow: ellipsis;
         }
         .gallery-card-footer {
             margin-top: auto;
@@ -436,25 +463,25 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(4, 4, 6, 0.96);
+            background: rgba(4, 4, 6, 0.97);
             z-index: 1000;
             display: none;
             justify-content: center;
             align-items: center;
-            padding: 40px;
+            padding: 30px;
             backdrop-filter: blur(12px);
         }
         .lightbox-container {
-            max-width: 1000px;
+            max-width: 960px;
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 16px;
             position: relative;
         }
         .lightbox-close {
             position: absolute;
-            top: -48px;
+            top: -44px;
             right: 0;
             color: var(--text-secondary);
             font-size: 32px;
@@ -471,7 +498,7 @@
             border: 1px solid var(--border);
             aspect-ratio: 16/9;
             background: #000;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
         }
         .lightbox-media img {
             width: 100%;
@@ -482,36 +509,37 @@
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 12px;
-            padding: 24px;
+            padding: 20px;
         }
         .lightbox-title {
             font-family: 'Outfit', sans-serif;
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
         .lightbox-desc {
-            font-size: 14px;
+            font-size: 13.5px;
             color: var(--text-secondary);
-            line-height: 1.6;
+            line-height: 1.5;
         }
         .lightbox-nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 8px;
+            margin-top: 4px;
         }
         .lightbox-btn {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border);
             color: var(--text-primary);
-            padding: 8px 16px;
+            padding: 6px 14px;
             border-radius: 6px;
-            font-size: 13px;
+            font-size: 12.5px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
+            font-family: 'Outfit', sans-serif;
         }
         .lightbox-btn:hover {
             background: rgba(255, 255, 255, 0.1);
@@ -521,7 +549,7 @@
         /* Competency Section */
         .competency-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
             margin-bottom: 56px;
         }
@@ -529,20 +557,20 @@
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 14px;
-            padding: 28px;
+            padding: 24px;
         }
         .competency-title {
             font-family: 'Outfit', sans-serif;
-            font-size: 16px;
+            font-size: 15.5px;
             font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
         .competency-desc {
-            font-size: 13.5px;
+            font-size: 13px;
             color: var(--text-secondary);
             line-height: 1.6;
         }
@@ -748,112 +776,407 @@
         <div class="section-separator"></div>
 
         <!-- Screenshots Showcase -->
-        <section>
+        <section id="showcase">
             <h2 class="section-title">System Showcase & Technical Annotations</h2>
             <p class="section-desc">
-                High-resolution walk-through of UI surfaces and debugger panels from the active local development sandbox, mapping to explicit engineering decisions. Click on any card to enlarge.
+                Review high-resolution walk-throughs of the entire platform's interface logs, categorizing the public funnel, merchant console, administrative control panel, and IDE codebase environment. Click on cards to view in-depth details.
             </p>
 
+            <!-- Filter Tabs -->
+            <div class="gallery-tabs">
+                <button class="tab-btn active" onclick="filterGallery('all')">All Images</button>
+                <button class="tab-btn" onclick="filterGallery('funnel')">Public Site & Funnel</button>
+                <button class="tab-btn" onclick="filterGallery('merchant')">Merchant Portal</button>
+                <button class="tab-btn" onclick="filterGallery('admin')">Super Admin</button>
+                <button class="tab-btn" onclick="filterGallery('dev')">Development</button>
+            </div>
+
             <div class="gallery-grid">
-                <!-- Card 1: Merchant Hub -->
-                <div class="gallery-card" onclick="openLightbox(0)">
+                <!-- ==================== Category: Funnel (官网) ==================== -->
+                <div class="gallery-card" data-category="funnel" onclick="openLightbox(0)">
                     <div class="gallery-img-wrapper">
-                        <span class="gallery-card-badge tag-blue">Phase 1/2</span>
-                        <img src="images/saas-marketing/1781105555210.jpg" alt="Merchant Hub">
+                        <span class="gallery-card-badge tag-blue">Phase 1</span>
+                        <img src="images/saas-marketing/official-hero.jpg" alt="Public Landing Hero">
                     </div>
                     <div class="gallery-card-info">
-                        <div class="gallery-card-title">Merchant Hub & Branch Console</div>
-                        <p class="gallery-card-desc">
-                            The entrance portal where multi-tenant operators manage multiple physical branches, configure shop hours, assign employee roles, and track store-wide metrics in an isolated tenant container.
-                        </p>
-                        <div class="gallery-card-footer">
-                            View Console Layout &rarr;
-                        </div>
+                        <div class="gallery-card-title">Public Landing Page Hero</div>
+                        <p class="gallery-card-desc">The main marketing front page pitching the AI conversion engine and driving initial signups.</p>
+                        <div class="gallery-card-footer">View Details &rarr;</div>
                     </div>
                 </div>
 
-                <!-- Card 2: Merchant Workspace -->
-                <div class="gallery-card" onclick="openLightbox(1)">
+                <div class="gallery-card" data-category="funnel" onclick="openLightbox(1)">
+                    <div class="gallery-img-wrapper">
+                        <span class="gallery-card-badge tag-blue">Phase 1</span>
+                        <img src="images/saas-marketing/official-login.jpg" alt="Login Gate">
+                    </div>
+                    <div class="gallery-card-info">
+                        <div class="gallery-card-title">Multi-Protocol Login Gate</div>
+                        <p class="gallery-card-desc">Unified login modal supporting password, SMS OTP code verification, and WeChat QR authentication.</p>
+                        <div class="gallery-card-footer">View Details &rarr;</div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="funnel" onclick="openLightbox(2)">
+                    <div class="gallery-img-wrapper">
+                        <span class="gallery-card-badge tag-blue">Phase 1</span>
+                        <img src="images/saas-marketing/official-features.jpg" alt="Features Map">
+                    </div>
+                    <div class="gallery-card-info">
+                        <div class="gallery-card-title">Platform Features Matrix</div>
+                        <p class="gallery-card-desc">Breakdown detailing the three pillars: AI Content Factory, Traffic Funnel, and Shop OS.</p>
+                        <div class="gallery-card-footer">View Details &rarr;</div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="funnel" onclick="openLightbox(3)">
+                    <div class="gallery-img-wrapper">
+                        <span class="gallery-card-badge tag-blue">Phase 1</span>
+                        <img src="images/saas-marketing/official-pricing.jpg" alt="Pricing Grid">
+                    </div>
+                    <div class="gallery-card-info">
+                        <div class="gallery-card-title">SaaS Pricing Calculator</div>
+                        <p class="gallery-card-desc">Flexible subscription models (Starter, Growth, Enterprise) integrated with WeChat Pay and Alipay APIs.</p>
+                        <div class="gallery-card-footer">View Details &rarr;</div>
+                    </div>
+                </div>
+
+                <!-- ==================== Category: Merchant (商家端) ==================== -->
+                <div class="gallery-card" data-category="merchant" onclick="openLightbox(4)">
                     <div class="gallery-img-wrapper">
                         <span class="gallery-card-badge tag-purple">Phase 2</span>
-                        <img src="images/saas-marketing/1781105688035.jpg" alt="Merchant Workspace">
+                        <img src="images/saas-marketing/merchant-login.jpg" alt="Merchant Login">
                     </div>
                     <div class="gallery-card-info">
-                        <div class="gallery-card-title">Operations Control Panel</div>
-                        <p class="gallery-card-desc">
-                            Active merchant workspace dashboard showing dynamic metrics, ongoing generation queue jobs, social account channel connections, and direct controls for trigger-based campaign campaigns.
-                        </p>
-                        <div class="gallery-card-footer">
-                            View Workspace &rarr;
-                        </div>
+                        <div class="gallery-card-title">Merchant Console Portal Auth</div>
+                        <p class="gallery-card-desc">Isolated merchant workspace entry checking secure session cookies and database scopes.</p>
+                        <div class="gallery-card-footer">View Details &rarr;</div>
                     </div>
                 </div>
 
-                <!-- Card 3: AI Quality Gate -->
-                <div class="gallery-card" onclick="openLightbox(2)">
+                <div class="gallery-card" data-category="merchant" onclick="openLightbox(5)">
                     <div class="gallery-img-wrapper">
-                        <span class="gallery-card-badge tag-emerald">Phase 3/5</span>
-                        <img src="images/saas-marketing/1781105762406.jpg" alt="AI Quality Gate">
+                        <span class="gallery-card-badge tag-purple">Phase 2</span>
+                        <img src="images/saas-marketing/merchant-store-select.jpg" alt="Branch Switcher">
                     </div>
                     <div class="gallery-card-info">
-                        <div class="gallery-card-title">AI Quality Gate & Output Guardrails</div>
-                        <p class="gallery-card-desc">
-                            A custom compliance editor verifying generated copy. It performs real-time scans checking for semantic alignment (grounding), illegal/sensitive keyword filtering, token budget usage, and layout consistency.
-                        </p>
-                        <div class="gallery-card-footer">
-                            View Compliance Gate &rarr;
-                        </div>
+                        <div class="gallery-card-title">Multi-Store Branch Selector</div>
+                        <p class="gallery-card-desc">Interface letting multi-branch business operators toggle store locations to load specific RBAC scopes.</p>
+                        <div class="gallery-card-footer">View Details &rarr;</div>
                     </div>
                 </div>
 
-                <!-- Card 4: Booking Exception Ops -->
-                <div class="gallery-card" onclick="openLightbox(3)">
+                <div class="gallery-card" data-category="merchant" onclick="openLightbox(6)">
+                    <div class="gallery-img-wrapper">
+                        <span class="gallery-card-badge tag-purple">Phase 2</span>
+                        <img src="images/saas-marketing/merchant-dashboard.jpg" alt="Merchant Workspace">
+                    </div>
+                    <div class="gallery-card-info">
+                        <div class="gallery-card-title">Merchant Dashboard Workspace</div>
+                        <p class="gallery-card-desc">Central administration workspace showing store statistics, campaigns overview, and recent actions logs.</p>
+                        <div class="gallery-card-footer">View Details &rarr;</div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="merchant" onclick="openLightbox(7)">
+                    <div class="gallery-img-wrapper">
+                        <span class="gallery-card-badge tag-emerald">Phase 3</span>
+                        <img src="images/saas-marketing/merchant-campaign-ops.jpg" alt="Campaign Hub">
+                    </div>
+                    <div class="gallery-card-info">
+                        <div class="gallery-card-title">Campaign Operations Overview</div>
+                        <p class="gallery-card-desc">Campaign repository list showing templates, target networks, and real-time subscriber metrics.</p>
+                        <div class="gallery-card-footer">View Details &rarr;</div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="merchant" onclick="openLightbox(8)">
+                    <div class="gallery-img-wrapper">
+                        <span class="gallery-card-badge tag-emerald">Phase 3</span>
+                        <img src="images/saas-marketing/merchant-campaign-config.jpg" alt="Campaign Config">
+                    </div>
+                    <div class="gallery-card-info">
+                        <div class="gallery-card-title">Campaign Strategy Configurator</div>
+                        <p class="gallery-card-desc">Step-by-step editor defining scheduling, RAG context files, and customer discount rewards.</p>
+                        <div class="gallery-card-footer">View Details &rarr;</div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="merchant" onclick="openLightbox(9)">
+                    <div class="gallery-img-wrapper">
+                        <span class="gallery-card-badge tag-emerald">Phase 3</span>
+                        <img src="images/saas-marketing/merchant-campaign-ai-draft.jpg" alt="AI Guardrail">
+                    </div>
+                    <div class="gallery-card-info">
+                        <div class="gallery-card-title">AI Prompt Copy Generator</div>
+                        <p class="gallery-card-desc">AI generator with built-in grounding checks, sensitive vocabulary scans, and token cost estimators.</p>
+                        <div class="gallery-card-footer">View Details &rarr;</div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="merchant" onclick="openLightbox(10)">
+                    <div class="gallery-img-wrapper">
+                        <span class="gallery-card-badge tag-amber">Phase 4</span>
+                        <img src="images/saas-marketing/merchant-campaign-post.jpg" alt="Social Post Log">
+                    </div>
+                    <div class="gallery-card-info">
+                        <div class="gallery-card-title">Social Publishing Logs Queue</div>
+                        <p class="gallery-card-desc">Post tracking matrix showing publishing status, views counts, claimed coupons, and conversion metrics.</p>
+                        <div class="gallery-card-footer">View Details &rarr;</div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="merchant" onclick="openLightbox(11)">
                     <div class="gallery-img-wrapper">
                         <span class="gallery-card-badge tag-rose">Phase 5</span>
-                        <img src="images/saas-marketing/1781105839042.jpg" alt="Booking Operations">
+                        <img src="images/saas-marketing/merchant-booking-ops.jpg" alt="Booking Calendar">
                     </div>
                     <div class="gallery-card-info">
-                        <div class="gallery-card-title">Booking Operations & Reversal Console</div>
-                        <p class="gallery-card-desc">
-                            A scheduling module managing operational exceptions: processing refunds, coupon reversals, handling guest no-show rules, and recording ledger compensation events safely.
-                        </p>
-                        <div class="gallery-card-footer">
-                            View Exception Logic &rarr;
-                        </div>
+                        <div class="gallery-card-title">Beauty Booking Operations</div>
+                        <p class="gallery-card-desc">Interactive booking grid managing reservations, technician schedules, points deductions, and order cancellations.</p>
+                        <div class="gallery-card-footer">View Details &rarr;</div>
                     </div>
                 </div>
 
-                <!-- Card 5: State Machine Debug -->
-                <div class="gallery-card" onclick="openLightbox(4)">
+                <div class="gallery-card" data-category="merchant" onclick="openLightbox(12)">
                     <div class="gallery-img-wrapper">
-                        <span class="gallery-card-badge tag-purple">Debug View</span>
-                        <img src="images/saas-marketing/1781105809098.jpg" alt="State Machine Debug">
+                        <span class="gallery-card-badge tag-rose">Phase 5</span>
+                        <img src="images/saas-marketing/merchant-verification.jpg" alt="Voucher Verification">
                     </div>
                     <div class="gallery-card-info">
-                        <div class="gallery-card-title">State Machine & Transaction Boundaries</div>
-                        <p class="gallery-card-desc">
-                            Backend debug interface tracing asynchronous worker status, distributed lock claims, idempotency hash keys, and nested SQL transaction scopes executing across packages.
-                        </p>
-                        <div class="gallery-card-footer">
-                            View Engine Debugger &rarr;
-                        </div>
+                        <div class="gallery-card-title">Staff Voucher Verification Page</div>
+                        <p class="gallery-card-desc">Staff scanner verifying token hashes, executing redemption state changes on customer orders.</p>
+                        <div class="gallery-card-footer">View Details &rarr;</div>
                     </div>
                 </div>
 
-                <!-- Card 6: IDE Development -->
-                <div class="gallery-card" onclick="openLightbox(5)">
+                <div class="gallery-card" data-category="merchant" onclick="openLightbox(13)">
+                    <div class="gallery-img-wrapper">
+                        <span class="gallery-card-badge tag-rose">Phase 5</span>
+                        <img src="images/saas-marketing/merchant-verification-history.jpg" alt="Verification Logs">
+                    </div>
+                    <div class="gallery-card-info">
+                        <div class="gallery-card-title">Voucher Verification History Logs</div>
+                        <p class="gallery-card-desc">Redemption audit log tracing validator staff, timestamp parameters, customer IDs, and voucher details.</p>
+                        <div class="gallery-card-footer">View Details &rarr;</div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="merchant" onclick="openLightbox(14)">
+                    <div class="gallery-img-wrapper">
+                        <span class="gallery-card-badge tag-purple">Phase 2</span>
+                        <img src="images/saas-marketing/merchant-ledger.jpg" alt="Merchant Ledger">
+                    </div>
+                    <div class="gallery-card-info">
+                        <div class="gallery-card-title">Merchant Financial Statement Ledger</div>
+                        <p class="gallery-card-desc">Strict double-entry ledger monitoring subscription charges, deposit accounts, and commission allocations.</p>
+                        <div class="gallery-card-footer">View Details &rarr;</div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="merchant" onclick="openLightbox(15)">
+                    <div class="gallery-img-wrapper">
+                        <span class="gallery-card-badge tag-purple">Phase 2</span>
+                        <img src="images/saas-marketing/merchant-invite-partner.jpg" alt="Staff Onboarding">
+                    </div>
+                    <div class="gallery-card-info">
+                        <div class="gallery-card-title">Partner Invitation Portal</div>
+                        <p class="gallery-card-desc">Onboarding utility issuing branch invite keys to coordinate external contractor profiles.</p>
+                        <div class="gallery-card-footer">View Details &rarr;</div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="merchant" onclick="openLightbox(16)">
+                    <div class="gallery-img-wrapper">
+                        <span class="gallery-card-badge tag-purple">Phase 2</span>
+                        <img src="images/saas-marketing/merchant-notifications.jpg" alt="System Messages">
+                    </div>
+                    <div class="gallery-card-info">
+                        <div class="gallery-card-title">Merchant Notifications Board</div>
+                        <p class="gallery-card-desc">Message broker dispatching warning logs, billing notices, campaign updates, and booking exceptions.</p>
+                        <div class="gallery-card-footer">View Details &rarr;</div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="merchant" onclick="openLightbox(17)">
+                    <div class="gallery-img-wrapper">
+                        <span class="gallery-card-badge tag-purple">Phase 2</span>
+                        <img src="images/saas-marketing/merchant-settings.jpg" alt="Merchant Profiles">
+                    </div>
+                    <div class="gallery-card-info">
+                        <div class="gallery-card-title">Merchant Settings Configuration</div>
+                        <p class="gallery-card-desc">Settings manager updating business hours, map configurations, and WeChat developer tokens.</p>
+                        <div class="gallery-card-footer">View Details &rarr;</div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="merchant" onclick="openLightbox(18)">
+                    <div class="gallery-img-wrapper">
+                        <span class="gallery-card-badge tag-purple">Phase 2</span>
+                        <img src="images/saas-marketing/merchant-staff-rbac.jpg" alt="Staff RBAC Setup">
+                    </div>
+                    <div class="gallery-card-info">
+                        <div class="gallery-card-title">Store Staff RBAC Profiles Setup</div>
+                        <p class="gallery-card-desc">Branch staff table managing permissions, defining operator vs manager roles.</p>
+                        <div class="gallery-card-footer">View Details &rarr;</div>
+                    </div>
+                </div>
+
+                <!-- ==================== Category: Admin (超管端) ==================== -->
+                <div class="gallery-card" data-category="admin" onclick="openLightbox(19)">
+                    <div class="gallery-img-wrapper">
+                        <span class="gallery-card-badge tag-purple">Phase 2</span>
+                        <img src="images/saas-marketing/admin-login.jpg" alt="Admin Login">
+                    </div>
+                    <div class="gallery-card-info">
+                        <div class="gallery-card-title">Super Admin Portal Gateway Auth</div>
+                        <p class="gallery-card-desc">Isolated control portal entryway requiring platform operator credentials check.</p>
+                        <div class="gallery-card-footer">View Details &rarr;</div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="admin" onclick="openLightbox(20)">
+                    <div class="gallery-img-wrapper">
+                        <span class="gallery-card-badge tag-purple">Phase 2</span>
+                        <img src="images/saas-marketing/admin-dashboard.jpg" alt="Admin Dashboard">
+                    </div>
+                    <div class="gallery-card-info">
+                        <div class="gallery-card-title">Platform Governance Dashboard</div>
+                        <p class="gallery-card-desc">Control dashboard showing total tenant counts, active database locks, and billing aggregations.</p>
+                        <div class="gallery-card-footer">View Details &rarr;</div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="admin" onclick="openLightbox(21)">
+                    <div class="gallery-img-wrapper">
+                        <span class="gallery-card-badge tag-purple">Phase 2</span>
+                        <img src="images/saas-marketing/admin-tenant-list.jpg" alt="Tenant List">
+                    </div>
+                    <div class="gallery-card-info">
+                        <div class="gallery-card-title">Multi-Tenant Directory Board</div>
+                        <p class="gallery-card-desc">Platform administration list reviewing user statuses, account quotas, and package tiers.</p>
+                        <div class="gallery-card-footer">View Details &rarr;</div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="admin" onclick="openLightbox(22)">
+                    <div class="gallery-img-wrapper">
+                        <span class="gallery-card-badge tag-purple">Phase 2</span>
+                        <img src="images/saas-marketing/admin-tenant-details.jpg" alt="Tenant Profile Detail">
+                    </div>
+                    <div class="gallery-card-info">
+                        <div class="gallery-card-title">Tenant Operations Profile Details</div>
+                        <p class="gallery-card-desc">Deep-dive view into a specific tenant environment to audit credits, verify limits, and adjust dates.</p>
+                        <div class="gallery-card-footer">View Details &rarr;</div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="admin" onclick="openLightbox(23)">
+                    <div class="gallery-img-wrapper">
+                        <span class="gallery-card-badge tag-purple">Phase 2</span>
+                        <img src="images/saas-marketing/admin-tenant-route-config.jpg" alt="AI Routing Controls">
+                    </div>
+                    <div class="gallery-card-info">
+                        <div class="gallery-card-title">AI Routing Channels Configuration</div>
+                        <p class="gallery-card-desc">Route manager assigning model paths, key headers, weights, and failover fallbacks.</p>
+                        <div class="gallery-card-footer">View Details &rarr;</div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="admin" onclick="openLightbox(24)">
+                    <div class="gallery-img-wrapper">
+                        <span class="gallery-card-badge tag-purple">Phase 2</span>
+                        <img src="images/saas-marketing/admin-tenant-model-config.jpg" alt="AI Provider Quotas">
+                    </div>
+                    <div class="gallery-card-info">
+                        <div class="gallery-card-title">AI Provider model limits config</div>
+                        <p class="gallery-card-desc">Configuration setting LLM models parameters, quota rules, and system token prices.</p>
+                        <div class="gallery-card-footer">View Details &rarr;</div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="admin" onclick="openLightbox(25)">
+                    <div class="gallery-img-wrapper">
+                        <span class="gallery-card-badge tag-purple">Phase 2</span>
+                        <img src="images/saas-marketing/admin-billing-mgmt.jpg" alt="Global Bill Board">
+                    </div>
+                    <div class="gallery-card-info">
+                        <div class="gallery-card-title">Platform Bill Management Board</div>
+                        <p class="gallery-card-desc">Global invoice logs directory recording payments, coupon credits, and subscription periods.</p>
+                        <div class="gallery-card-footer">View Details &rarr;</div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="admin" onclick="openLightbox(26)">
+                    <div class="gallery-img-wrapper">
+                        <span class="gallery-card-badge tag-purple">Phase 2</span>
+                        <img src="images/saas-marketing/admin-commission-mgmt.jpg" alt="Rebate Manager">
+                    </div>
+                    <div class="gallery-card-info">
+                        <div class="gallery-card-title">Commissions & Rebates Governance</div>
+                        <p class="gallery-card-desc">Control desk managing partner payouts, commission balances, and referral cashouts.</p>
+                        <div class="gallery-card-footer">View Details &rarr;</div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="admin" onclick="openLightbox(27)">
+                    <div class="gallery-img-wrapper">
+                        <span class="gallery-card-badge tag-purple">Phase 2</span>
+                        <img src="images/saas-marketing/admin-staff-add.jpg" alt="Admin Staff Add">
+                    </div>
+                    <div class="gallery-card-info">
+                        <div class="gallery-card-title">Platform Operator Profile Creator</div>
+                        <p class="gallery-card-desc">Security creation portal setting administrative operators credentials and scope tokens.</p>
+                        <div class="gallery-card-footer">View Details &rarr;</div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="admin" onclick="openLightbox(28)">
+                    <div class="gallery-img-wrapper">
+                        <span class="gallery-card-badge tag-purple">Phase 2</span>
+                        <img src="images/saas-marketing/admin-staff-list.jpg" alt="Admin Staff List">
+                    </div>
+                    <div class="gallery-card-info">
+                        <div class="gallery-card-title">Administrative Personnel Registry</div>
+                        <p class="gallery-card-desc">Internal personnel table detailing operators access privileges and team logs.</p>
+                        <div class="gallery-card-footer">View Details &rarr;</div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="admin" onclick="openLightbox(29)">
+                    <div class="gallery-img-wrapper">
+                        <span class="gallery-card-badge tag-purple">Phase 2</span>
+                        <img src="images/saas-marketing/admin-staff-roles.jpg" alt="SoD Settings">
+                    </div>
+                    <div class="gallery-card-info">
+                        <div class="gallery-card-title">Administrative Roles & SoD tree</div>
+                        <p class="gallery-card-desc">Configuration setting role privileges limits to maintain Separation of Duties (SoD).</p>
+                        <div class="gallery-card-footer">View Details &rarr;</div>
+                    </div>
+                </div>
+
+                <div class="gallery-card" data-category="admin" onclick="openLightbox(30)">
+                    <div class="gallery-img-wrapper">
+                        <span class="gallery-card-badge tag-purple">Phase 2</span>
+                        <img src="images/saas-marketing/admin-audit-logs.jpg" alt="Audit Logs">
+                    </div>
+                    <div class="gallery-card-info">
+                        <div class="gallery-card-title">Immutable Admin System Audit Logs</div>
+                        <p class="gallery-card-desc">Platform audit logger recording administrator actions, settings updates, and logins.</p>
+                        <div class="gallery-card-footer">View Details &rarr;</div>
+                    </div>
+                </div>
+
+                <!-- ==================== Category: Dev (开发端) ==================== -->
+                <div class="gallery-card" data-category="dev" onclick="openLightbox(31)">
                     <div class="gallery-img-wrapper">
                         <span class="gallery-card-badge tag-rose">Development</span>
-                        <img src="images/saas-marketing/1781105953562.jpg" alt="VS Code IDE">
+                        <img src="images/saas-marketing/dev-ide-index.png" alt="IDE Environment">
                     </div>
                     <div class="gallery-card-info">
-                        <div class="gallery-card-title">IDE Environment & Requirement Index</div>
-                        <p class="gallery-card-desc">
-                            A snapshot of the VS Code development setup showing the unified requirement checklists, prompt-driven developer agents, and strict file mapping patterns utilized to preserve zero lint warnings.
-                        </p>
-                        <div class="gallery-card-footer">
-                            View IDE Environment &rarr;
-                        </div>
+                        <div class="gallery-card-title">VS Code Workspace & Requirements</div>
+                        <p class="gallery-card-desc">Developer sandbox illustrating Phase Requirements Index and strict developer compilations checks.</p>
+                        <div class="gallery-card-footer">View Details &rarr;</div>
                     </div>
                 </div>
             </div>
@@ -923,7 +1246,7 @@
             </div>
             <div class="lightbox-nav">
                 <button class="lightbox-btn" onclick="navigateLightbox(-1)">&larr; Previous</button>
-                <div style="color: var(--text-muted); font-size: 13px;" id="lightbox-index">1 of 6</div>
+                <div style="color: var(--text-muted); font-size: 13px;" id="lightbox-index">1 of 32</div>
                 <button class="lightbox-btn" onclick="navigateLightbox(1)">Next &rarr;</button>
             </div>
         </div>
@@ -932,42 +1255,245 @@
     <script>
         // Gallery Item Definitions
         const galleryItems = [
+            // Public Site & Funnel (官网)
             {
-                src: "images/saas-marketing/1781105555210.jpg",
-                title: "Merchant Hub & Multi-Branch Console",
-                desc: "Enterprise-level branch portal enabling multi-tenant business owners to register store branches, configure business categories (such as hospitality or beauty), assign dynamic RBAC staff profiles, and manage active customer segments inside isolated tenant databases. Demonstrates deep understanding of multi-tenancy architecture and custom DB schema constraints."
+                src: "images/saas-marketing/official-hero.jpg",
+                title: "Public Landing Page Hero",
+                category: "funnel",
+                desc: "The public conversion interface presenting the LinkFlow AI branding narrative. Promotes automated funnel campaigns, public-to-private loops, and key statistics like conversion rates and store onboarding count."
             },
             {
-                src: "images/saas-marketing/1781105688035.jpg",
-                title: "Merchant Workspace & Execution Dashboard",
+                src: "images/saas-marketing/official-login.jpg",
+                title: "Multi-Protocol Onboarding & Login Gate",
+                category: "funnel",
+                desc: "An integrated user onboarding portal supporting WeChat QR OAuth verification, standard password logins, and secure Aliyun SMS OTP verification with customizable retry limits."
+            },
+            {
+                src: "images/saas-marketing/official-features.jpg",
+                title: "LinkFlow Platform Core Features Matrix",
+                category: "funnel",
+                desc: "Marketing section mapping out the platform's core operating features, including the AI Script Generator (AI Content Factory), automated customer acquisition bridge (Traffic Funnel), and tenant backend system (Shop OS)."
+            },
+            {
+                src: "images/saas-marketing/official-pricing.jpg",
+                title: "Flexible Subscription Pricing Calculator",
+                category: "funnel",
+                desc: "Multi-tier commercial membership plans (Starter, Growth, Enterprise) with transparent credit balances. Supports localized Chinese mobile payment gateways including WeChat Pay and Alipay."
+            },
+
+            // Merchant Portal (商家端)
+            {
+                src: "images/saas-marketing/merchant-login.jpg",
+                title: "Merchant Console Authentication",
+                category: "merchant",
+                desc: "The secure entryway into merchant administration. Designed with dedicated session storage keys and JWT tokens to prevent tenant leakage."
+            },
+            {
+                src: "images/saas-marketing/merchant-store-select.jpg",
+                title: "Multi-Store Branch Workspace Selector",
+                category: "merchant",
+                desc: "Allows multi-store business owners to toggle between physical branch locations, initializing branch-specific RBAC contexts and local product catalogs."
+            },
+            {
+                src: "images/saas-marketing/merchant-dashboard.jpg",
+                title: "Merchant Core Workspace & Analytics",
+                category: "merchant",
                 desc: "A centralized dashboard compiling real-time business statistics, active campaign status, system alerts, and fast navigation to AI copy generation templates. Leverages optimized SQL aggregates and Prisma query caching to serve low-latency operational metrics to business owners."
             },
             {
-                src: "images/saas-marketing/1781105762406.jpg",
-                title: "AI Quality Gate & Compliance Guardrails",
-                desc: "Sophisticated editorial workspace scanning generated content before scheduling. Built-in mechanisms check for semantic alignment (ensuring grounding against approved merchant memory), scan for compliance violations (illegal words filtering), calculate generation costs, and format visual output. Demonstrates multi-LLM orchestration combined with RAG retrieval architectures."
+                src: "images/saas-marketing/merchant-campaign-ops.jpg",
+                title: "AI Campaign Management Hub",
+                category: "merchant",
+                desc: "Campaign administration portal allowing merchants to manage campaign templates, define social targets, configure discount coupon allocations, and monitor conversion metrics."
             },
             {
-                src: "images/saas-marketing/1781105839042.jpg",
-                title: "Booking Operations & Exception Reversals",
+                src: "images/saas-marketing/merchant-campaign-config.jpg",
+                title: "Automated Campaign Plan Editor",
+                category: "merchant",
+                desc: "Step-by-step layout configuring dynamic campaign parameters. Merchants define campaign schedules, AI prompt context parameters, and link reward tokens (discounts, membership privileges)."
+            },
+            {
+                src: "images/saas-marketing/merchant-campaign-ai-draft.jpg",
+                title: "Prompt Editor & AI Quality Gate Output",
+                category: "merchant",
+                desc: "Sophisticated editorial workspace scanning generated content before scheduling. Built-in mechanisms check for semantic alignment (ensuring grounding against approved merchant memory), scan for compliance violations (illegal words filtering), calculate generation costs, and format visual output."
+            },
+            {
+                src: "images/saas-marketing/merchant-campaign-post.jpg",
+                title: "Social Channel Publishing Log",
+                category: "merchant",
+                desc: "A visual post queue displaying published Douyin/TikTok campaigns. Traces campaign visibility rates, user likes, coupon claims, and private loyalty registrations."
+            },
+            {
+                src: "images/saas-marketing/merchant-booking-ops.jpg",
+                title: "Beauty Booking Scheduling Operations",
+                category: "merchant",
                 desc: "Interactive calendar managing booking exceptions. Handles commercial events like guest cancellations, order refunds, voucher credits rollbacks, and merchant ledger allocations. The underlying service maintains strict ACID boundaries, preventing double-bookings or commission accounting errors."
             },
             {
-                src: "images/saas-marketing/1781105809098.jpg",
-                title: "State Machine Handoff & Backend Transactions Debugger",
-                desc: "Backend developer debug terminal tracing the exact transaction lifecycle. It captures Redis distributed lock leases, records idempotency hash validations, traces queue state handoffs (from Next.js API trigger to BullMQ, through Python Celery workers, and back to PostgreSQL), and highlights database-level savepoints."
+                src: "images/saas-marketing/merchant-verification.jpg",
+                title: "Staff Scan-to-Verify Redemption Portal",
+                category: "merchant",
+                desc: "Mobile-optimized validation scanner. Allows store employees to scan customer claim QR codes, matching voucher validation hashes against the PostgreSQL backend."
             },
             {
-                src: "images/saas-marketing/1781105953562.jpg",
-                title: "VS Code IDE Sandbox & Phase Requirement Index",
+                src: "images/saas-marketing/merchant-verification-history.jpg",
+                title: "Voucher Redemption Security Audit Log",
+                category: "merchant",
+                desc: "Immutable database log verifying all past voucher validation events, detailing employee ID, redemption timestamp, client details, and transaction codes."
+            },
+            {
+                src: "images/saas-marketing/merchant-ledger.jpg",
+                title: "Merchant General Ledger & Accounts Balance",
+                category: "merchant",
+                desc: "A detailed statement tracking merchant credit deposits, subscription billing deductions, customer rebate commissions, and transaction refund ledger entries."
+            },
+            {
+                src: "images/saas-marketing/merchant-invite-partner.jpg",
+                title: "Multi-Store Team Invitation System",
+                category: "merchant",
+                desc: "Onboarding page generating unique, time-sensitive invite keys allowing employees to join a store branch under specified roles."
+            },
+            {
+                src: "images/saas-marketing/merchant-notifications.jpg",
+                title: "Merchant System Message Board",
+                category: "merchant",
+                desc: "Broadcast notification manager alerts operators about booking exceptions, system updates, billing thresholds, and campaign achievements."
+            },
+            {
+                src: "images/saas-marketing/merchant-settings.jpg",
+                title: "Merchant Account & Shop Profiles Setup",
+                category: "merchant",
+                desc: "Configuration editor handling store business categories, operating hours, geolocation mapping, and WeChat mini-program webhook keys."
+            },
+            {
+                src: "images/saas-marketing/merchant-staff-rbac.jpg",
+                title: "Store Staff Profiles & RBAC Configuration",
+                category: "merchant",
+                desc: "Administration table managing team employees, updating permission nodes, and configuring roles like Manager, Staff, or Financial Auditor."
+            },
+
+            // Super Admin Backend (超管端)
+            {
+                src: "images/saas-marketing/admin-login.jpg",
+                title: "Super Admin Platform Gateway",
+                category: "admin",
+                desc: "Isolated admin portal gateway utilizing dedicated authentication routes to prevent administrative access credentials from leaking into general tenant spaces."
+            },
+            {
+                src: "images/saas-marketing/admin-dashboard.jpg",
+                title: "Global Platform Analytics Dashboard",
+                category: "admin",
+                desc: "Central administrator workspace detailing overall tenant counts, system-wide transaction values, active AI credits consumption, and server CPU/memory status."
+            },
+            {
+                src: "images/saas-marketing/admin-tenant-list.jpg",
+                title: "Multi-Tenant Governance Board",
+                category: "admin",
+                desc: "Management console listing all system tenants. Admins review subscription packages, adjust credit quotas, and freeze/unfreeze accounts."
+            },
+            {
+                src: "images/saas-marketing/admin-tenant-details.jpg",
+                title: "Tenant Operations Detail & Configuration",
+                category: "admin",
+                desc: "Deep-dive view into a specific tenant workspace. Super admins modify subscription expirations, adjust transaction fee percentages, and audit database usage metrics."
+            },
+            {
+                src: "images/saas-marketing/admin-tenant-route-config.jpg",
+                title: "AI Model Route Authority System",
+                category: "admin",
+                desc: "Central configuration interface mapping tenant requests to LLM provider channels. Admins define route priorities, weight parameters, and fallback failovers."
+            },
+            {
+                src: "images/saas-marketing/admin-tenant-model-config.jpg",
+                title: "LLM Model Quota & Performance Monitor",
+                category: "admin",
+                desc: "Detailed LLM performance metrics tracking latency, token usage costs, request error rates, and credit thresholds per model configuration."
+            },
+            {
+                src: "images/saas-marketing/admin-billing-mgmt.jpg",
+                title: "Global Invoices & Billing Management",
+                category: "admin",
+                desc: "Admin ledger tracking multi-tenant subscriptions billing events, Stripe payments, and Alipay invoices settlement."
+            },
+            {
+                src: "images/saas-marketing/admin-commission-mgmt.jpg",
+                title: "Platform Commissions & Rebates Audit Console",
+                category: "admin",
+                desc: "Operational interface tracking referral rebates, partner commission splits, and payment payouts settlement status."
+            },
+            {
+                src: "images/saas-marketing/admin-staff-add.jpg",
+                title: "Administrative Staff Onboarding Portal",
+                category: "admin",
+                desc: "Security portal creating super admin personnel profiles, assigning security clearance roles, and configuring multi-factor verification."
+            },
+            {
+                src: "images/saas-marketing/admin-staff-list.jpg",
+                title: "Administrative Personnel Directory",
+                category: "admin",
+                desc: "Directory listing administrative operators, detailing system permissions roles, and tracing user action scopes."
+            },
+            {
+                src: "images/saas-marketing/admin-staff-roles.jpg",
+                title: "Platform Administration Role Definition Tree",
+                category: "admin",
+                desc: "Security configuration tree managing administrative authorization roles, ensuring strict Separation of Duties (SoD) across operations."
+            },
+            {
+                src: "images/saas-marketing/admin-audit-logs.jpg",
+                title: "Immutable System Operations Audit Log",
+                category: "admin",
+                desc: "Immutable system-wide ledger tracking admin operations, configuration modifications, and user sign-in events for security audits."
+            },
+
+            // Development (开发端)
+            {
+                src: "images/saas-marketing/dev-ide-index.png",
+                title: "VS Code IDE Workspace & Requirements Index",
+                category: "dev",
                 desc: "Developer sandbox environment showcasing strict adherence to project milestones (Phases 1-5). It outlines how developer agents align coding structures against formal PRDs, enforce TypeScript interfaces, and eliminate lint compiler warning debts, proving execution discipline in professional engineering environments."
             }
         ];
 
+        let activeItems = [...galleryItems]; // holds currently visible items
         let currentActiveIndex = 0;
 
-        function openLightbox(index) {
-            currentActiveIndex = index;
+        function filterGallery(category) {
+            // Update active tab button styling
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Get clicked button via event
+            if (event) {
+                event.currentTarget.classList.add('active');
+            }
+
+            // Filter cards in UI
+            const cards = document.querySelectorAll('.gallery-card');
+            cards.forEach(card => {
+                const cat = card.getAttribute('data-category');
+                if (category === 'all' || cat === category) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            // Rebuild active list for Lightbox navigation
+            if (category === 'all') {
+                activeItems = [...galleryItems];
+            } else {
+                activeItems = galleryItems.filter(item => item.category === category);
+            }
+        }
+
+        function openLightbox(itemIndexInFullList) {
+            // Find what index this item has in the ACTIVE (filtered) items
+            const clickedItem = galleryItems[itemIndexInFullList];
+            currentActiveIndex = activeItems.indexOf(clickedItem);
+            if (currentActiveIndex === -1) currentActiveIndex = 0;
+            
             updateLightboxContent();
             document.getElementById('lightbox').style.display = 'flex';
             document.body.style.overflow = 'hidden'; // Lock scrolling
@@ -979,21 +1505,22 @@
         }
 
         function navigateLightbox(direction) {
+            if (activeItems.length === 0) return;
             currentActiveIndex += direction;
             if (currentActiveIndex < 0) {
-                currentActiveIndex = galleryItems.length - 1;
-            } else if (currentActiveIndex >= galleryItems.length) {
+                currentActiveIndex = activeItems.length - 1;
+            } else if (currentActiveIndex >= activeItems.length) {
                 currentActiveIndex = 0;
             }
             updateLightboxContent();
         }
 
         function updateLightboxContent() {
-            const item = galleryItems[currentActiveIndex];
+            const item = activeItems[currentActiveIndex];
             document.getElementById('lightbox-img').src = item.src;
             document.getElementById('lightbox-title').textContent = item.title;
             document.getElementById('lightbox-desc').textContent = item.desc;
-            document.getElementById('lightbox-index').textContent = `${currentActiveIndex + 1} of ${galleryItems.length}`;
+            document.getElementById('lightbox-index').textContent = `${currentActiveIndex + 1} of ${activeItems.length}`;
         }
 
         // Close on escape, navigate on left/right keys
